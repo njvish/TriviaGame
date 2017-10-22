@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	$("#trivia").hide();
+	$("#end").hide();
+	$("#finish").hide();
 
 //Variables//
 var number = 60;
@@ -14,21 +17,28 @@ function run() {
 
 //Hide the title and score at bottom//
 $('#start').on('click', function(){
+    $("#finish").show();
+    $("#trivia").show();
+    $("#start").hide();
     run();
+    
 });
 
 $('#finish').on('click', function(){
+    $("#trivia").hide();
+    $("#finish").hide();
+    $("#end").show();
     stop();
+    
 });
-//Decrease the timer
+//Decrease the timer//
 function decrement() {
     number--;
     $("#timer").html(" " + number + " seconds");
     if (number === 1) {
         $("#timer").html(" " + number + " second");
     }else if (number === 0) {
-        $('#start').hide();
-        hide();
+       $("#trivia").hide();
         stop();
     }
 }
@@ -38,6 +48,8 @@ function stop() {
 }
 
 });
+
+//Tally up correct answers and add to score, also tally unanswered//
 
 
 
